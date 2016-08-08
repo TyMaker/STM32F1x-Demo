@@ -13,9 +13,18 @@
   
 #include "stm32f10x.h"
 
+void delay_us(uint32_t n){
+	SysTick->LOAD = 72*n;
+	SysTick->CTRL = 0x00000005;
+	while(!SysTick->CTRL & 0x00010000);
+	SysTick->CTRL = 0x00000004;
+}
+
 int main(void)
 {
 //	SystemInit();
+	
+	
 }
 
 /*********************************************END OF FILE**********************/
